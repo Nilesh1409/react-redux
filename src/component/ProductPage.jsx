@@ -40,6 +40,8 @@ const ProductPage = ()=>{
         .then((res) => setTodoData(res)
          )
          dispatch(deleteTodo(id))
+         window.location.href = "http://localhost:3000"
+         console.log("change location")
     }
     
     return  <>

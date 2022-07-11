@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux";
+import { useSelector,  useDispatch } from "react-redux";
+import { updateStore } from "../redux/action";
 
 const InputList = () => {
     // const [todoData,setTodoData] = React.useState("")
-    const todoData  = useSelector(state => state.todolist) ;
+    const todoData  = useSelector(state => state.todolist);
+    const dispatch = useDispatch();
     // console.log("useSelector",todolist)
     // console.log("useState",todolist)
     React.useEffect(()=>{
         fetch(`http://localhost:8080/todo`)
         .then((res)=>res.json())
         .then((res) => {
+            dispatch( updateStore(res));
             //    setTodoData(res)
             // console.log("REs",res)
         })
